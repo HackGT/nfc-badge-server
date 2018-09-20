@@ -1,0 +1,18 @@
+{
+  "name": "nfc-badge-server",
+  "version": "1.0.0",
+  "description": "WebSockets server for reading HackGT badge IDs via NFC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Petschek",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node-fetch": "^2.1.2",
+    "@types/ws": "^6.0.1",
+    "nfc-pcsc": "^0.6.2",
+    "node-fetch": "^2.2.0",
+    "ws": "^6.0.0"
+  }
+}
