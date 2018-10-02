@@ -4,10 +4,10 @@ const { NFC } = require("nfc-pcsc");
 const nfc = new NFC();
 
 const server = new WebSocket.Server({ port: 1337 });
-function broadcast (data: any) {
+function broadcast (data: object) {
 	server.clients.forEach(client => {
 		if (client.readyState === WebSocket.OPEN) {
-			client.send(data);
+			client.send(JSON.stringify(data));
 		}
 	});
 };
