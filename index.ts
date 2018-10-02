@@ -184,6 +184,7 @@ nfc.on("reader", async (reader: any) => {
 		}
 		const [, id] = match;
 
+		console.log(`[${new Date().toUTCString()}] Badge tapped: ${id}`);
 		broadcast({"badgeID": id});
 	});
 
