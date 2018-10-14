@@ -4,6 +4,15 @@ const { NFC } = require("nfc-pcsc");
 const nfc = new NFC();
 
 const server = new WebSocket.Server({ port: 1337 });
+
+if (!process.env.CHECKIN_KEY) {
+	throw new Error("No checkin key - set the CHECKIN_KEY env variable");
+}
+
+server.on('connection', function connection(connection: WebSocket) {
+	connection.send(JSON.stringify({"key": process.env.CHECKIN_KEY}));
+});
+
 function broadcast (data: object) {
 	server.clients.forEach(client => {
 		if (client.readyState === WebSocket.OPEN) {
@@ -196,3 +205,5 @@ nfc.on("reader", async (reader: any) => {
 nfc.on("error", (err: Error) => {
 	console.error(err);
 });
+
+console.log("Socket server up!")
