@@ -166,7 +166,7 @@ class NDEFParser {
 
 nfc.on("reader", async (reader: any) => {
 	reader.aid = "F222222222";
-
+	console.log(reader.reader.name);
 	reader.on("card", async () => {
 		let data: Buffer;
 		let url: string;
@@ -177,7 +177,7 @@ nfc.on("reader", async (reader: any) => {
 		catch {
 			return;
 		}
-		const match = url.match(/^https:\/\/live.hack.gt\/?\?user=([a-f0-9\-]+)$/i);
+		const match = url.match(/^https:\/\/info.hack.gt\/?\?user=([a-f0-9\-]+)$/i);
 		if (!match) {
 			console.warn(`Invalid URL: ${url}`);
 			return;
